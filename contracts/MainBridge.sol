@@ -58,7 +58,6 @@ contract MainBridge is BasicBridge {
     function swapETH2Side(address token, uint256 amount)
         external
         payable
-        notContract
         returns (bool)
     {
         require(

@@ -80,7 +80,6 @@ contract SideBridge is BasicBridge {
     function swapSideToMain(address token, uint256 amount)
         external
         payable
-        notContract
         returns (bool)
     {
         address erc20Addr = swapMappingSideToMain[token];

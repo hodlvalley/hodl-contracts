@@ -125,8 +125,8 @@ contract MoneyToken is Ownable {
             rawAmount,
             "Money::mint: amount exceeds 96 bits"
         );
-        balances[msg.sender] = add96(
-            balances[msg.sender],
+        balances[recipient] = add96(
+            balances[recipient],
             amount,
             "Money::mint: mint amount exceeds balance"
         );
@@ -171,17 +171,13 @@ contract MoneyToken is Ownable {
         returns (bool)
     {
         uint96 amount;
-        if (rawAmount == uint256(-1)) {
+        if (rawAmount == uint256(-1) || rawAmount >= 2**96) {
             amount = uint96(-1);
         } else {
-            amount = safe96(
-                rawAmount,
-                "Money::approve: amount exceeds 96 bits"
-            );
+            amount = uint96(rawAmount);
         }
 
         allowances[msg.sender][spender] = amount;
-
         emit Approval(msg.sender, spender, amount);
         return true;
     }
