@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MoneyToken is Ownable {
+contract MoneyTokenBridge is Ownable {
     /// @notice EIP-20 token name for this token
     string public constant name = "MONEY";
 
